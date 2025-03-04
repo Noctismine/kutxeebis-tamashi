@@ -1,52 +1,123 @@
-/* General styles */
+/* GENERAL STYLES */
 body {
     font-family: 'Poppins', Arial, sans-serif;
     text-align: center;
-    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+    background: linear-gradient(135deg, #1e1e2f, #2a2a4a);
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    color: #fff;
 }
 
-/* Centering everything */
+/* CONTAINER - Glassmorphism */
 .container {
-    width: 95%;
+    width: 90%;
     max-width: 850px;
-    padding: 30px;
-    background: white;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
     text-align: center;
     animation: fadeIn 0.5s ease-in-out;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
+/* HEADINGS */
 h1 {
-    font-size: 28px;
-    color: #333;
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #ff6a95, #ff8e53);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
 }
 
-/* FLEXBOX LAYOUT */
+/* IMAGE GRID */
 .image-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
     margin-top: 25px;
-    padding: 2px;
-    max-width: 750px; /* Limit width */
+    padding: 10px;
+    max-width: 750px;
 }
 
-#next-btn{
-    margin-left: auto;
-    margin-right: auto;
+/* IMAGE STYLING */
+.image-container img {
+    width: calc(33.33% - 10px);
+    max-width: 220px;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* IMAGE HOVER EFFECT */
+.image-container img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.4);
+    border-color: #ff6a95;
+}
+
+/* BUTTONS - Neon Glow Effect */
+button {
+    padding: 14px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #ff6a95, #ff8e53);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 15px rgba(255, 107, 138, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* BUTTON HOVER */
+button:hover {
+    background: linear-gradient(135deg, #ff4f88, #ff3e6b);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 107, 138, 0.7);
+}
+
+/* BUTTON ACTIVE (Click Effect) */
+button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 10px rgba(255, 107, 138, 0.5);
+}
+
+/* BUTTON GLOW */
+button::before {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(255, 107, 138, 0.4) 10%, transparent 70%);
+    top: -50%;
+    left: -50%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+button:hover::before {
+    opacity: 1;
 }
 
 #restart-btn{
@@ -54,74 +125,31 @@ h1 {
     margin-right: auto;
 }
 
-/* Style for images */
-.image-container img {
-    width: calc(33.33% - 10px); /* Three images per row */
-    max-width: 220px; /* Prevent oversizing */
-    height: auto;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Hover effect */
-.image-container img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
-}
-
-/* Center the last image if it's alone in a row */
-.image-container img:last-child:nth-child(3n + 1) {
+#next-btn{
     margin-left: auto;
     margin-right: auto;
-    display: block;
 }
-
-/* BUTTONS */
-button {
-    padding: 14px 28px;
-    font-size: 20px;
-    font-weight: bold;
-    background: #ff7eb3;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background 0.3s, transform 0.2s;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-button:hover {
-    background: #ff4f88;
-    transform: scale(1.05);
-}
-
-
 
 /* RESPONSIVE DESIGN */
 
 /* 📱 Mobile (Max width: 600px) */
 @media (max-width: 600px) {
     .container {
-        width: 90%;
+        width: 95%;
         padding: 20px;
     }
 
     .image-container {
-        gap: 7px;
+        gap: 8px;
     }
 
     .image-container img {
-        width: 100%; /* Full width on small screens */
-        max-width: 280px;
+        width: 100%;
+        max-width: 250px;
     }
 
     h1 {
-        font-size: 24px;
+        font-size: 28px;
     }
 
     button {
@@ -133,13 +161,18 @@ button:hover {
 /* 📊 Tablet (Max width: 900px) */
 @media (max-width: 900px) {
     .image-container img {
-        width: calc(50% - 10px); /* Two images per row */
+        width: calc(50% - 10px);
     }
+}
 
-    /* Center last image properly on tablets */
-    .image-container img:last-child:nth-child(2n + 1) {
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
+/* FADE IN ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
