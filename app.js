@@ -97,7 +97,7 @@ function getRandomWrongImages(images, count) {
 
     }
 
-    console.log(correctImages);
+   
     return selected;
 
     
@@ -142,6 +142,10 @@ function checkAnswer(event) {
         }
     }
 }
+
+
+
+
 
 document.getElementById("start-btn").addEventListener("click", startGame);
 document.getElementById("restart-btn").addEventListener("click", loadCity);
