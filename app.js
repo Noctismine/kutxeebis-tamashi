@@ -134,7 +134,7 @@ function checkAnswer(event) {
                 setTimeout(() => {
                     document.getElementById("start-btn").style.display = "block";
                     document.getElementById("game-area").style.display = "none";
-                }, 4000); // Show the message for 2 seconds before restarting
+                }, 4000); // Show the message for 4 seconds before restarting
             } else {
                 gameOver = true;
                 document.getElementById("restart-btn").style.display = "block";
@@ -142,9 +142,55 @@ function checkAnswer(event) {
         }
     }
 }
+const answerImages = [
+    "answer1.png", "answer2.png", "answer3.png", "answer4.png",
+    "answer5.png", "answer6.png", "answer7.png", "answer8.png",
+    "answer9.png", "answer10.png", "answer11.png"
+];
 
+let sliderIndex = 0;
 
+// Open Answer Page
+function openSlider() {
+    sliderIndex = 0;
+    updateSlider();
+    document.getElementById("slider-container").style.display = "block";
+}
 
+// Close Answer Page
+function closeSlider() {
+    document.getElementById("slider-container").style.display = "none";
+}
+
+// Update Answer Image
+function updateSlider() {
+    const sliderImg = document.getElementById("slider-img");
+    if (sliderImg) {
+        sliderImg.src = `images/${answerImages[sliderIndex]}`;
+        sliderImg.onerror = function () {
+            console.error("Error loading:", sliderImg.src);
+            sliderImg.src = "images/error.png"; // Default image if one is missing
+        };
+    }
+}
+
+// Next Answer
+function nextSlide() {
+    sliderIndex = (sliderIndex + 1) % answerImages.length;
+    updateSlider();
+}
+
+// Previous Answer
+function prevSlide() {
+    sliderIndex = (sliderIndex - 1 + answerImages.length) % answerImages.length;
+    updateSlider();
+}
+
+// Event Listeners
+document.getElementById("answers-btn").addEventListener("click", openSlider);
+document.getElementById("close-slider").addEventListener("click", closeSlider);
+document.getElementById("next-slide").addEventListener("click", nextSlide);
+document.getElementById("prev-slide").addEventListener("click", prevSlide);
 
 
 document.getElementById("start-btn").addEventListener("click", startGame);

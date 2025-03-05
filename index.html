@@ -10,10 +10,9 @@
 <body>
     <div class="container">
         <h1>კუთხეების თამაში</h1>
-        <div id="hearts-container">
-            
-        </div>
+        <div id="hearts-container"></div>
         <button id="start-btn">დაწყება 🚀</button>
+        <button id="answers-btn">პასუხები 📖</button> 
         
         <div id="game-area" style="display: none;">
             <h2 id="city-name">Loading...</h2>
@@ -22,8 +21,19 @@
             <button id="next-btn" style="display: none;">➡️ შემდეგი ტური</button>
             <button id="restart-btn" style="display: none;">🔄 ხელახლა დაწყება</button>
         </div>
+
+        <!-- Answer Page Slider -->
+        <div id="slider-container">
+            <span id="close-slider">&times;</span>
+            <h2>ყველა კუთხის სწორი პასუხები</h2>
+            <div id="slider">
+                <img id="slider-img" src="" alt="Answer Image">
+            </div>
+            <button id="prev-slide">⬅️</button>
+            <button id="next-slide">➡️</button>
+        </div>
     </div>
-    
+
     <script src="app.js"></script>
 </body>
 </html>
