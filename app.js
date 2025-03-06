@@ -205,7 +205,7 @@ function enableCards() {
 
 const answerImages = [
     "answer1.png", "answer2.png", "answer3.png", "answer4.png",
-    "answer5.png", "answer6.png", "answer7.png", "answer8.png",
+    "answer5.jpg", "answer6.png", "answer7.jpg", "answer8.png",
     "answer9.png", "answer10.png", "answer11.png"
 ];
 

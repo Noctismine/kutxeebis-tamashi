@@ -61,14 +61,14 @@ h1 {
     margin-top: 25px;
     max-width: 850px;
     width: 100%;
+    
 }
 
 .image-container img {
     width: 30%; /* Adjust width to fit in two rows */
     max-width: 250px;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: 15px;
+    
+    border-radius: 40px;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
@@ -356,7 +356,11 @@ button:hover {
     }
 }
 
-
+@media (max-width: 800px) {
+    .container{
+        border-radius: 50px;
+    }
+}
 
 
 @media (max-width: 550px){
