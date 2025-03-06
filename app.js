@@ -104,6 +104,25 @@ function getRandomWrongImages(images, count) {
     
 }
 
+
+function playSoundsSequentially(sounds) {
+    let currentSoundIndex = 0;
+
+    function playNextSound() {
+        if (currentSoundIndex < sounds.length) {
+            let sound = new Audio(sounds[currentSoundIndex]);
+            sound.play();
+            sound.onended = () => {
+                currentSoundIndex++;
+                playNextSound();
+            };
+        }
+    }
+
+    playNextSound();
+}
+
+
 function checkAnswer(event) {
     if (gameOver) return;
 
@@ -118,8 +137,8 @@ function checkAnswer(event) {
         img.style.border = "3px solid green";
         correctCount++;
 
-        let correctSound = new Audio("voices/2.m4a");
-        correctSound.play();
+        // Play correct sound sequentially
+        playSoundsSequentially(["voices/2.m4a", "voices/correct-answer-next.m4a"]);
 
         if (correctCount === 2) {
             gameOver = true;
@@ -129,20 +148,34 @@ function checkAnswer(event) {
         img.style.border = "3px solid red";
         wrongCount++;
 
-        let wrongSound = new Audio("voices/1.m4a");
-        wrongSound.play();
+        // Play wrong sound sequentially
+        playSoundsSequentially(["voices/1.m4a", "voices/wrong-answer-next.m4a"]);
 
         if (wrongCount === 2) {
             hearts--;
             updateHearts();
 
-            document.querySelectorAll(".image-container img").forEach(img => {
-                img.classList.add("disabled"); // Disable hover and click
+            // Disable clicking & hovering on all images
+            let allImages = document.querySelectorAll("#image-grid img");
+            allImages.forEach(img => {
+                img.style.pointerEvents = "none"; // Disable clicking
+                img.style.opacity = "0.5"; // Visually fade out inactive cards
             });
+
+            setTimeout(() => {
+                // Play round lost sound sequentially
+                playSoundsSequentially(["voices/3.m4a", "voices/lost-round-next.m4a"]);
+            }, 1300);
 
             if (hearts === 0) {
                 gameOver = true;
-                document.getElementById("result").innerText = "ყველა სიცოცხლე ამოგეწურა! ";
+                document.getElementById("result").innerText = "ყველა სიცოცხლე ამოგეწურა!";
+
+                setTimeout(() => {
+                    // Play game over sound sequentially
+                    playSoundsSequentially(["voices/4.m4a", "voices/game-over-next.m4a"]);
+                }, 3000);
+
                 setTimeout(() => {
                     document.getElementById("start-btn").style.display = "block";
                     document.getElementById("game-area").style.display = "none";
@@ -154,6 +187,7 @@ function checkAnswer(event) {
         }
     }
 }
+
 
 window.onbeforeunload = function (event) {
     event.preventDefault();
@@ -212,6 +246,24 @@ function prevSlide() {
     sliderIndex = (sliderIndex - 1 + answerImages.length) % answerImages.length;
     updateSlider();
 }
+
+// Show the Game Info Modal when the button is clicked
+document.getElementById("game-info-btn").addEventListener("click", function () {
+    document.getElementById("game-info-modal").style.display = "block";
+});
+
+// Close the Game Info Modal when the close button is clicked
+document.getElementById("close-info-btn").addEventListener("click", function () {
+    document.getElementById("game-info-modal").style.display = "none";
+});
+
+// Close the modal if the user clicks outside of it
+window.addEventListener("click", function (event) {
+    if (event.target === document.getElementById("game-info-modal")) {
+        document.getElementById("game-info-modal").style.display = "none";
+    }
+});
+
 
 // Event Listeners
 document.getElementById("answers-btn").addEventListener("click", openSlider);

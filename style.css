@@ -87,6 +87,61 @@ h1 {
 }
 
 
+/* Game Info Page */
+.game-info-page {
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+}
+
+.game-info-page h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ff6a95;
+    margin-bottom: 20px;
+}
+
+.game-info-page p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+#game-info-btn {
+    padding: 14px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: #ff6a95;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+#game-info-btn:hover {
+    background: #ff4f88;
+    transform: translateY(-3px);
+}
+
+#close-info-btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    background: #ff6a95;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#close-info-btn:hover {
+    background: #ff4f88;
+}
 
 
 
@@ -108,6 +163,80 @@ h1 {
     margin-top: 20px;
     animation: pulse 1s infinite alternate;
 }
+
+/* General Layout */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Game Info Button */
+#game-info-btn {
+    padding: 14px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    background: #ff6a95;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#game-info-btn:hover {
+    background: #ff4f88;
+    transform: translateY(-3px);
+}
+
+/* Modal Background */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    
+}
+
+/* Modal Content */
+.modal-content {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    margin: 5% auto;
+    border-radius: 30px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid #f6f6f6;
+    width: 100%;
+    height: 300px;
+    max-width: 650px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    background: linear-gradient(135deg, #2a2a4a, #1e1e2f);
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    cursor: pointer;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+
 
 button {
     padding: 14px 30px;
@@ -189,6 +318,48 @@ button:hover {
 #close-slider:hover {
     color: red;
 }
+
+@media (max-width: 768px) {
+    .close {
+        font-size: 24px; /* Smaller size on mobile */
+        top: 5px; /* Adjust top position */
+        right: 15px; /* Adjust right position */
+    }
+}
+
+@media (max-width: 840px) {
+    .close {
+       
+        top: 25px; /* Adjust top position */
+        right: 15px; /* Adjust right position */
+    }
+}
+
+@media (max-width: 400px) {
+    .close {
+        
+        top: 12px; /* Adjust top position */
+        right: 15px; /* Adjust right position */
+    }
+}
+
+@media (max-width: 335px) {
+    .close {
+        
+      right: 1px;
+       
+    }
+}
+
+
+
+
+@media (max-width: 550px){
+    .modal-content{
+        height: 500px;
+    }
+}
+
 
 
 
