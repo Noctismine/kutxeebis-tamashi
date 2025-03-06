@@ -117,6 +117,11 @@ function checkAnswer(event) {
     if (correctImages.includes(selectedImage)) {
         img.style.border = "3px solid green";
         correctCount++;
+
+        // დაკვრა სწორი პასუხის ხმის
+        let correctSound = new Audio("voices/2.m4a");
+        correctSound.play();
+
         if (correctCount === 2) {
             gameOver = true;
             document.getElementById("next-btn").style.display = "block";
@@ -124,8 +129,13 @@ function checkAnswer(event) {
     } else {
         img.style.border = "3px solid red";
         wrongCount++;
+
+
+        let wrongSound = new Audio("voices/1.m4a");
+        wrongSound.play();
+
         if (wrongCount === 2) {
-            hearts--; // Remove one heart
+            hearts--;
             updateHearts();
 
             if (hearts === 0) {
@@ -134,7 +144,7 @@ function checkAnswer(event) {
                 setTimeout(() => {
                     document.getElementById("start-btn").style.display = "block";
                     document.getElementById("game-area").style.display = "none";
-                }, 4000); // Show the message for 4 seconds before restarting
+                }, 4000);
             } else {
                 gameOver = true;
                 document.getElementById("restart-btn").style.display = "block";
@@ -142,6 +152,8 @@ function checkAnswer(event) {
         }
     }
 }
+
+
 const answerImages = [
     "answer1.png", "answer2.png", "answer3.png", "answer4.png",
     "answer5.png", "answer6.png", "answer7.png", "answer8.png",
