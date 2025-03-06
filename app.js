@@ -155,6 +155,10 @@ function checkAnswer(event) {
     }
 }
 
+window.onbeforeunload = function (event) {
+    event.preventDefault();
+    event.returnValue = "ნამდვილად გსურთ თამაშის დატოვება?";
+};
 
 function enableCards() {
     document.querySelectorAll(".image-container img").forEach(img => {
