@@ -74,10 +74,27 @@ h1 {
     border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
+
+
+.image-container img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+
+
+
+
 .image-container img:hover {
     transform: scale(1.1);
     box-shadow: 0 5px 20px rgba(255, 255, 255, 0.4);
-    border-color: #ff6a95;
+    border-color: #fbff00;
+    
 }
 
 #result {

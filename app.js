@@ -118,7 +118,6 @@ function checkAnswer(event) {
         img.style.border = "3px solid green";
         correctCount++;
 
-        // დაკვრა სწორი პასუხის ხმის
         let correctSound = new Audio("voices/2.m4a");
         correctSound.play();
 
@@ -130,13 +129,16 @@ function checkAnswer(event) {
         img.style.border = "3px solid red";
         wrongCount++;
 
-
         let wrongSound = new Audio("voices/1.m4a");
         wrongSound.play();
 
         if (wrongCount === 2) {
             hearts--;
             updateHearts();
+
+            document.querySelectorAll(".image-container img").forEach(img => {
+                img.classList.add("disabled"); // Disable hover and click
+            });
 
             if (hearts === 0) {
                 gameOver = true;
@@ -152,6 +154,15 @@ function checkAnswer(event) {
         }
     }
 }
+
+
+function enableCards() {
+    document.querySelectorAll(".image-container img").forEach(img => {
+        img.classList.remove("disabled");
+    });
+}
+
+
 
 
 const answerImages = [
