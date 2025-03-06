@@ -200,46 +200,43 @@ body {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-
- 
-
     
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Modal Content */
 .modal-content {
-
-    margin: 5% auto;
-    border-radius: 30px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
-    border: 4px solid #f6f6f6;
-    width: 100%;
-    height: 300px;
-    max-width: 650px;
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
+    margin: 2% auto;
     background: linear-gradient(135deg, #2a2a4a, #1e1e2f);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Close Button */
 .close {
-    color: #aaa;
+    color: white;
     font-size: 28px;
     font-weight: bold;
     position: absolute;
     top: 10px;
-    right: 25px;
+    right: 20px;
     cursor: pointer;
+    transition: color 0.3s ease;
 }
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
+
+.close:hover {
+    color: red;
 }
 
 
@@ -325,13 +322,7 @@ button:hover {
     color: red;
 }
 
-@media (max-width: 768px) {
-    .close {
-        font-size: 24px; /* Smaller size on mobile */
-        top: 5px; /* Adjust top position */
-        right: 15px; /* Adjust right position */
-    }
-}
+
 
 @media (max-width: 840px) {
     .close {
@@ -370,9 +361,15 @@ button:hover {
     }
 }
 
-@media (max-width: 680px){
+@media (max-width: 790px){
     .modal-content{
-        
+        margin: 0% auto;
+    }
+}
+
+@media (max-width: 600px){
+    .modal-content{
+        border-radius: 0px 0px 10px 10px;
     }
 }
 
